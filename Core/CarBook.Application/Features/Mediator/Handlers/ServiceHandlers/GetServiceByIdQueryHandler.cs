@@ -15,16 +15,16 @@ namespace CarBook.Application.Features.Mediator.Handlers.ServiceHandlers
             _repository = repository;
         }
 
-        public Task<GetServiceByIdQueryResult> Handle(GetServiceByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GetServiceByIdQueryResult> Handle(GetServiceByIdQuery request, CancellationToken cancellationToken)
         {
-            var value = _repository.GetByIdAsync(request.Id).Result;
-            return Task.FromResult(new GetServiceByIdQueryResult
+            var value = await _repository.GetByIdAsync(request.Id);
+            return new GetServiceByIdQueryResult
             {
                 ServiceId = value.ServiceId,
                 Title = value.Title,
                 Description = value.Description,
                 IconUrl = value.IconUrl,
-            });
+            };
         }
     }
 }
