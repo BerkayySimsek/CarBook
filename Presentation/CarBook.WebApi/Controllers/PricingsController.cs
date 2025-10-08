@@ -34,21 +34,21 @@ namespace CarBook.WebApi.Controllers
         public async Task<IActionResult> CreatePricing(CreatePricingCommand command)
         {
             await _mediator.Send(command);
-            return Ok("Ödeme Türü Başarıyla Eklendi.");
+            return Ok("Fiyatlandırma Başarıyla Eklendi.");
         }
 
         [HttpDelete]
         public async Task<IActionResult> RemovePricing(int id)
         {
             await _mediator.Send(new RemovePricingCommand(id));
-            return Ok("Ödeme Türü Başarıyla Silindi.");
+            return Ok("Fiyatlandırma Başarıyla Silindi.");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdatePricing(UpdatePricingCommand command)
         {
             await _mediator.Send(command);
-            return Ok("Ödeme Türü Başarıyla Güncellendi.");
+            return Ok("Fiyatlandırma Başarıyla Güncellendi.");
         }
     }
 }
